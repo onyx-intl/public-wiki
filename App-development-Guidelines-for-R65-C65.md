@@ -5,5 +5,5 @@ Generally speaking, App development for R65 with E-Ink screen is just like norma
 1. Use 16-level grayscale for your UI. 
 2. Avoid dynamic UI elements, such as animation. 
 3. Avoid scrollable UI components, use paged ListView/GridView instead. 
-4. Hold PARTIAL_WAKE_LOCK when you excute time consuming work, or else device will go to sleep which can be waken up only by RTC timer (in precision of minute) or Power button. Hold FULL_WAKE_LOCK to prevent device from going to standby. Be attention, even FULL_WAKE_LOCK is helden, device can still go to sleep, but will not go to standby. So PARTIAL_WAKE_LOCK is suggested, only use FULL_WAKE_LOCK when you are aware what you are wanting. 
+4. Because we've adjusted standard android power management policy to fit the device, so you need use IDeviceController.newWakeLock() to get corresponding WakeLock to prevent device from sleep.
 5. You can access device specific features in package com.onyx.android.sdk.device, some wrapper classes are provided for convenience, such as EpdController to interfere with E-Ink screen, and EnvironmentUtil as a supplement of Android's android.os.Environment, etc.
