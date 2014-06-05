@@ -3,6 +3,7 @@
 Onyx device uses standard Android input framework. So basically, developer can use MotionEvent to receive input from device.  You can setup a touch listener to your view by using following code
 
 ```
+    private void setupListener() {
         yourView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -10,8 +11,8 @@ Onyx device uses standard Android input framework. So basically, developer can u
                 return true;
             }
         });
+    }
 
-    @Override
     public boolean onTouchEvent(ReaderActivity activity, MotionEvent e) {
         // ignore multi touch
         if (e.getPointerCount() > 1) {
@@ -41,6 +42,7 @@ Onyx device uses standard Android input framework. So basically, developer can u
         }
         return true;
     }
+
 ```
 
 
