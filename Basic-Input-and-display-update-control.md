@@ -66,5 +66,11 @@ Once switch back from scribble mode, you can use following code to restore updat
 EpdController.resetViewUpdateMode(view);
 ```
 
+fast screen scribble 
+=================
 
-
+in order to redraw recorded points as fast as possible, you could use dedicated line drawing interface
+```
+EpdController.moveTo(screenX, screenY, lineWidth);
+EpdController.lineTo(screenX, screenY, UpdateMode.DW);
+```
