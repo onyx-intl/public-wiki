@@ -66,6 +66,16 @@ Once switch back from scribble mode, you can use following code to restore updat
 EpdController.resetViewUpdateMode(view);
 ```
 
+lock screen update mode
+=========================
+
+Onyx Android SDK also provides a simple way to set the system update mode for all application, you can simply call 
+```
+EpdController.setSystemUpdateModeAndScheme(EpdController.UpdateMode.DW, EpdController.UpdateScheme.QUEUE_AND_MERGE, Integer.MAX_VALUE);
+```
+when you're using scribble-style application.
+
+
 fast screen scribble 
 =================
 
