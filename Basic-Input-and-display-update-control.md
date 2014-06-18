@@ -73,6 +73,12 @@ Onyx Android SDK also provides a simple way to set the system update mode for al
 ```
 EpdController.setSystemUpdateModeAndScheme(EpdController.UpdateMode.DW, EpdController.UpdateScheme.QUEUE_AND_MERGE, Integer.MAX_VALUE);
 ```
+
+You can reset the the update scheme by
+```
+EpdController.clearSystemUpdateModeAndScheme();
+```
+
 when you're using scribble-style application.
 
 
