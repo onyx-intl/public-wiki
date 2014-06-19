@@ -7,10 +7,19 @@ alsa_amixer cset numid=42 1
 alsa_amixer cset numid=45 1 
 alsa_amixer cset numid=9 110
 
-#Enable FM
+radio
+========
+
+* Enable FM
+```
 echo 1 > /sys/bus/i2c/drivers/si4735/1-0063/pwr_ctl
-#Switch to AM, 0 is FM, 1 is AM, 2 is LW, 3 is SW
+```
+
+* Switch to AM, 0 is FM, 1 is AM, 2 is LW, 3 is SW
+```
 echo 1 > /sys/bus/i2c/drivers/si4735/1-0063/receiver
+```
+
 
 #Set AM frequency to 567Hz, range between 520kHz and 1.71MHz
 echo 567 > /sys/bus/i2c/drivers/si4735/1-0063/tune_freq
