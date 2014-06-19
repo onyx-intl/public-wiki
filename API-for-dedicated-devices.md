@@ -3,10 +3,8 @@ radio
 
 
 SI4735 (FM/AM/LW/SW): 
-PS: Below character in red is the parameter can be changed.
-
-* Set Audio Path, At java layer, to change the audio path, you can set use the API:
-* AudioManager.setParameters(“fm_route=1”), but remember to set “fm_route=0” when closing # the FM application.
+Set Audio Path, At java layer, to change the audio path, you can set use the API:
+AudioManager.setParameters(“fm_route=1”), but remember to set “fm_route=0” when closing # the FM application.
 alsa_amixer cset numid=42 1
 alsa_amixer cset numid=45 1 
 alsa_amixer cset numid=9 110
