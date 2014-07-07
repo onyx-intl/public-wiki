@@ -66,4 +66,4 @@ echo 0 > /sys/bus/i2c/drivers/si4707/2-0011/pwr_ctl
 =================================================================
 The test command is located at external/uv2w
 
-Use uv2w –s “AT+DMOVER” can get the module version. Other command can refer to the documents “HKT-UV2W 串口AT通信协议VER01_test.pdf”
+Use uv2w –s “AT+DMOVER” can get the module version. Other command can refer to the documents “HKT-UV2W 串口AT通信协议VER01_test.pdf”, check https://github.com/onyx-intl/OnyxAndroidSDK/blob/master/docs/at_VER01_test.pdf
