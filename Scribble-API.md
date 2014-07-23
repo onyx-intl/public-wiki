@@ -11,6 +11,9 @@ to request framework to change to scribble mode. When scribble is finished, deve
 EpdController.leaveScribbleMode();
 ```
 
+Note: During scribble mode, all other screen update request will be ignored.
+
+
 # moveTo and lineTo
 
 When using scribble, Onyx Android SDK provides two functions to draw line on screen
