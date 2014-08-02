@@ -1,3 +1,13 @@
+
+screen update
+==============
+Force screen full update 
+
+```
+EpdController.invalidate(surfaceView, EpdController.UpdateMode.GC);
+```
+
+
 device input event
 ===================
 
