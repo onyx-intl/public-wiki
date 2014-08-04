@@ -55,6 +55,9 @@ public class PaintView extends View {
     }
 }
 
+
+public class ScribbleActivity extends Activity {
+
 public boolean onTouchEvent(ScribbleActivity activity, MotionEvent e) {
         // ignore multi touch
         if (e.getPointerCount() > 1) {
@@ -90,4 +93,6 @@ public boolean onTouchEvent(ScribbleActivity activity, MotionEvent e) {
         }
         return true;
     }
+}
+
 ```
