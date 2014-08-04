@@ -43,9 +43,51 @@ scribble with shape support
 =============================
 
 ```
- EpdController.setStrokeStyle(Style.StorkePen);
- EpdController.strokeStart(float x, float y, float width, float ts, float pressure);
- EpdController.strokeMove(float x, float y, float width, float ts, float pressure);
- EpdController.strokeFinish(float x, float y, float width, float ts, float pressure);
-```
+public class PaintView extends View {
 
+    float [] mapPoint(float x, float y) {
+        int viewLocation[] = {0, 0};
+        getLocationOnScreen(viewLocation);
+        float screenPoints[] = {viewLocation[0] + x, viewLocation[1] + y};
+        float dst[] = {0, 0};
+        matrix.mapPoints(dst, screenPoints);
+        return dst;
+    }
+}
+
+public boolean onTouchEvent(ScribbleActivity activity, MotionEvent e) {
+        // ignore multi touch
+        if (e.getPointerCount() > 1) {
+            return false;
+        }
+
+        final float baseWidth = 5;
+        paintView.init(paintView.getWidth(), paintView.getHeight());
+
+        switch (e.getAction() & MotionEvent.ACTION_MASK) {
+            case (MotionEvent.ACTION_DOWN):
+                float dst[] = paintView.mapPoint(e.getX(), e.getY());
+                EpdController.startStroke(baseWidth, dst[0], dst[1], e.getPressure(), e.getSize(), e.getEventTime());
+                return true;
+            case (MotionEvent.ACTION_CANCEL):
+            case (MotionEvent.ACTION_OUTSIDE):
+                break;
+            case MotionEvent.ACTION_UP:
+                dst = paintView.mapPoint(e.getX(), e.getY());
+                EpdController.finishStroke(baseWidth, dst[0], dst[1], e.getPressure(), e.getSize(), e.getEventTime());
+                return true;
+            case MotionEvent.ACTION_MOVE:
+                int n = e.getHistorySize();
+                for (int i = 0; i < n; i++) {
+                    dst = paintView.mapPoint(e.getX(), e.getY());
+                    EpdController.addStrokePoint(baseWidth,  dst[0], dst[1], e.getPressure(), e.getSize(), e.getEventTime());
+                }
+                dst = paintView.mapPoint(e.getX(), e.getY());
+                EpdController.addStrokePoint(baseWidth, dst[0], dst[1], e.getPressure(), e.getSize(), e.getEventTime());
+                return true;
+            default:
+                break;
+        }
+        return true;
+    }
+```
