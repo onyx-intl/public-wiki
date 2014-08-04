@@ -39,3 +39,13 @@ The x and y must be in screen coordinates. For M96, developer could convert view
  EpdController.moveTo(dst[0], dst[1], width);
 ```
 
+scribble with shape support
+=============================
+
+```
+ EpdController.setStrokeStyle(Style.StorkePen);
+ EpdController.strokeStart(float x, float y, float width, float ts, float pressure);
+ EpdController.strokeMove(float x, float y, float width, float ts, float pressure);
+ EpdController.strokeFinish(float x, float y, float width, float ts, float pressure);
+```
+
