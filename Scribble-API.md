@@ -42,7 +42,15 @@ The x and y must be in screen coordinates. For M96, developer could convert view
 scribble with shape support
 =============================
 
+Developer may need to call enterScribbleMode and leaveScribbleMode() during scribbling. 
+
 ```
+EpdController.enterScribbleMode();
+EpdController.leaveScribbleMode();
+
+```
+```
+
 public class PaintView extends View {
 
     float [] mapPoint(float x, float y) {
