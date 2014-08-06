@@ -90,7 +90,7 @@ public class ScribbleActivity extends Activity {
             case MotionEvent.ACTION_MOVE:
                 int n = e.getHistorySize();
                 for (int i = 0; i < n; i++) {
-                    dst = paintView.mapPoint(e.getX(), e.getY());
+                    dst = paintView.mapPoint(e.getHistoricalX(i), e.getHistoricalY(i));
                     EpdController.addStrokePoint(baseWidth,  dst[0], dst[1], e.getPressure(), e.getSize(), e.getEventTime());
                 }
                 dst = paintView.mapPoint(e.getX(), e.getY());
