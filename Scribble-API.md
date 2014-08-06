@@ -45,8 +45,8 @@ scribble with shape support
 Developer may need to call enterScribbleMode and leaveScribbleMode() during scribbling. 
 
 ```
-EpdController.enterScribbleMode();
-EpdController.leaveScribbleMode();
+EpdController.enterScribbleMode(view);
+EpdController.leaveScribbleMode(view);
 
 ```
 ```
