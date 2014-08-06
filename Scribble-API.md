@@ -3,12 +3,12 @@
 Before using scribble feature, developer needs to call 
 
 ```
-EpdController.enterScribbleMode();
+EpdController.enterScribbleMode(view);
 ```
 to request framework to change to scribble mode. When scribble is finished, developer could call
 
 ```
-EpdController.leaveScribbleMode();
+EpdController.leaveScribbleMode(view);
 ```
 
 Note: During scribble mode, all other screen update request will be ignored.
@@ -39,7 +39,7 @@ The x and y must be in screen coordinates. For M96, developer could convert view
  EpdController.moveTo(dst[0], dst[1], width);
 ```
 
-scribble with shape support
+smooth scribble
 =============================
 
 Developer may need to call enterScribbleMode and leaveScribbleMode() during scribbling. 
