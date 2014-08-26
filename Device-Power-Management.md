@@ -1,4 +1,7 @@
+# disable standby timeout
+
 ```
+   
    private static final int FALLBACK_SCREEN_TIMEOUT_DEFAULT_VALUE = -1;
    private void disableSystemPMSettings() {
         ContentResolver resolver = YourActivity.this.getContentResolver();
@@ -14,3 +17,6 @@
     }
 
 ```
+
+# change shutdown timeout
+
