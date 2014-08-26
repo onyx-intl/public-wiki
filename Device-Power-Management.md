@@ -18,3 +18,4 @@ private void disableSystemPMSettings() {
 
 # change shutdown timeout
 
+# change wifi idle tiemout
