@@ -39,6 +39,28 @@ The x and y must be in screen coordinates. For M96, developer could convert view
  EpdController.moveTo(dst[0], dst[1], width);
 ```
 
+# stroke color 
+
+you can change stroke color by 
+
+```
+ // so far, only black and white are supported due to eink display limit.
+ EpdController.setStrokeColor(0);  // black
+ EpdController.setStrokeColor(0xffffffff);  // white
+
+```
+
+# stroke style
+You can change the stroke style by 
+
+```
+ // only pen style and brush style supported.
+ EpdController.setStrokeStyle(0);  // pen style, the line width will not be changed
+ EpdController.setStrokeColor(1);  // brush style, line width will be changed when pressure or speed changed.
+
+```
+
+
 smooth scribble
 =============================
 
