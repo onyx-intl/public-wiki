@@ -60,6 +60,18 @@ You can change the stroke style by
 
 ```
 
+# Painter style
+
+You can change the painter style by 
+
+```
+
+EpdController.setPainterStyle(true,   // antiAlias or not
+ Paint.Style.FILL_AND_STROKE,         // stroke style
+ Paint.Join.ROUND,                    // join style
+ Paint.Cap.ROUND);                    // cap style
+
+```
 
 smooth scribble
 =============================
