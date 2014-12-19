@@ -137,3 +137,14 @@ public class ScribbleActivity extends Activity {
     }
 
 ```
+
+# scribble line width
+
+```
+public static float startStroke(float baseWidth, float x, float y, float pressure, float size, float time);
+public static float addStrokePoint(float baseWidth, float x, float y, float pressure, float size, float time);
+public static float finishStroke(float baseWidth, float x, float y, float pressure, float size, float time) ;
+
+Above functions return line width currently calculated. Application may need to change the line width to proper value and save into persistent storage.
+
+```
