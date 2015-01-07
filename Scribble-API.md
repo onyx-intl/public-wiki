@@ -56,7 +56,7 @@ You can change the stroke style by
 ```
  // only pen style and brush style supported.
  EpdController.setStrokeStyle(0);  // pen style, the line width will not be changed
- EpdController.setStrokeColor(1);  // brush style, line width will be changed when pressure or speed changed.
+ EpdController.setStrokeStyle(1);  // brush style, line width will be changed when pressure or speed changed.
 
 ```
 
