@@ -45,7 +45,7 @@ you can change stroke color by
 
 ```
  // so far, only black and white are supported due to eink display limit.
- EpdController.setStrokeColor(0);  // black
+ EpdController.setStrokeColor(0xff000000);  // black
  EpdController.setStrokeColor(0xffffffff);  // white
 
 ```
