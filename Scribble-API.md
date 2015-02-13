@@ -148,3 +148,23 @@ public static float finishStroke(float baseWidth, float x, float y, float pressu
 Above functions return line width currently calculated. Application may need to change the line width to proper value and save into persistent storage.
 
 ```
+
+
+# handle eraser and quick start
+
+```
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_ALT_LEFT:
+            case KeyEvent.KEYCODE_ALT_RIGHT:
+                // eraser has been pressed
+                return false;
+            case KeyEvent.KEYCODE_BUTTON_START:
+                // the quick start button has been pressed.
+                return false;
+            default:
+                return super.onKeyDown(activity,keyCode,event);
+        }
+    }
+```
