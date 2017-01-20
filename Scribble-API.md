@@ -3,12 +3,12 @@
 Before using scribble feature, developer needs to call 
 
 ```
-EpdController.enterScribbleMode(view);
+Device.currentDevice().enterScribbleMode(view);
 ```
 to request framework to change to scribble mode. When scribble is finished, developer could call
 
 ```
-EpdController.leaveScribbleMode(view);
+Device.currentDevice().leaveScribbleMode(view);
 ```
 
 Note: During scribble mode, all other screen update request will be ignored.
@@ -19,8 +19,8 @@ Note: During scribble mode, all other screen update request will be ignored.
 When using scribble, Onyx Android SDK provides two functions to draw line on screen
 
 ```
-EpdController.moveTo(x, y, lineWidth);
-EpdController.lineTo(x, y, UpdateMode.DW);
+Device.currentDevice().moveTo(x, y, lineWidth);
+Device.currentDevice().lineTo(x, y, UpdateMode.DU);
 ```
 
 The x and y must be in screen coordinates. For M96, developer could convert view coordinate to screen coordinates by using following code
@@ -36,7 +36,7 @@ The x and y must be in screen coordinates. For M96, developer could convert view
  float screenPoints[] = {viewLocation[0] + touchX, viewLocation[1] + touchY};
  float dst[] = {0, 0};
  matrix.mapPoints(dst, screenPoints);
- EpdController.moveTo(dst[0], dst[1], width);
+ Device.currentDevice().moveTo(x, y, lineWidth);
 ```
 
 # stroke color 
@@ -45,8 +45,8 @@ you can change stroke color by
 
 ```
  // so far, only black and white are supported due to eink display limit.
- EpdController.setStrokeColor(0xff000000);  // black
- EpdController.setStrokeColor(0xffffffff);  // white
+ Device.currentDevice().setStrokeColor(0xff000000);  // black
+ Device.currentDevice().setStrokeColor(0xffffffff);  // white
 
 ```
 
@@ -55,8 +55,8 @@ You can change the stroke style by
 
 ```
  // only pen style and brush style supported.
- EpdController.setStrokeStyle(0);  // pen style, the line width will not be changed
- EpdController.setStrokeStyle(1);  // brush style, line width will be changed when pressure or speed changed.
+ Device.currentDevice().setStrokeStyle(0);  // pen style, the line width will not be changed
+ Device.currentDevice().setStrokeStyle(1);  // brush style, line width will be changed when pressure or speed changed.
 
 ```
 
@@ -66,7 +66,7 @@ You can change the painter style by
 
 ```
 
-EpdController.setPainterStyle(true,   // antiAlias or not
+Device.currentDevice().setPainterStyle(true,   // antiAlias or not
  Paint.Style.FILL_AND_STROKE,         // stroke style
  Paint.Join.ROUND,                    // join style
  Paint.Cap.ROUND);                    // cap style
@@ -79,8 +79,8 @@ smooth scribble
 Developer may need to call enterScribbleMode and leaveScribbleMode() during scribbling. 
 
 ```
-EpdController.enterScribbleMode(view);
-EpdController.leaveScribbleMode(view);
+Device.currentDevice().enterScribbleMode(view);
+Device.currentDevice().leaveScribbleMode(view);
 
 ```
 ```
@@ -112,23 +112,23 @@ public class ScribbleActivity extends Activity {
         switch (e.getAction() & MotionEvent.ACTION_MASK) {
             case (MotionEvent.ACTION_DOWN):
                 float dst[] = paintView.mapPoint(e.getX(), e.getY());
-                EpdController.startStroke(baseWidth, dst[0], dst[1], e.getPressure(), e.getSize(), e.getEventTime());
+                Device.currentDevice().startStroke(baseWidth, dst[0], dst[1], e.getPressure(), e.getSize(), e.getEventTime());
                 return true;
             case (MotionEvent.ACTION_CANCEL):
             case (MotionEvent.ACTION_OUTSIDE):
                 break;
             case MotionEvent.ACTION_UP:
                 dst = paintView.mapPoint(e.getX(), e.getY());
-                EpdController.finishStroke(baseWidth, dst[0], dst[1], e.getPressure(), e.getSize(), e.getEventTime());
+                Device.currentDevice().finishStroke(baseWidth, dst[0], dst[1], e.getPressure(), e.getSize(), e.getEventTime());
                 return true;
             case MotionEvent.ACTION_MOVE:
                 int n = e.getHistorySize();
                 for (int i = 0; i < n; i++) {
                     dst = paintView.mapPoint(e.getHistoricalX(i), e.getHistoricalY(i));
-                    EpdController.addStrokePoint(baseWidth,  dst[0], dst[1], e.getPressure(), e.getSize(), e.getEventTime());
+                    Device.currentDevice().addStrokePoint(baseWidth,  dst[0], dst[1], e.getPressure(), e.getSize(), e.getEventTime());
                 }
                 dst = paintView.mapPoint(e.getX(), e.getY());
-                EpdController.addStrokePoint(baseWidth, dst[0], dst[1], e.getPressure(), e.getSize(), e.getEventTime());
+                Device.currentDevice().addStrokePoint(baseWidth, dst[0], dst[1], e.getPressure(), e.getSize(), e.getEventTime());
                 return true;
             default:
                 break;
